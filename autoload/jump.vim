@@ -19,7 +19,7 @@ function! jump#JumpToFile()
                 execute 'edit ' . destpath
             elseif (len(g:jump_pattern[i]) > 2 && g:jump_pattern[i][2] == "skip")
                 continue
-            elseif confirm("Create file: " . fnamemodify(destpath, ":t") . "?", "&yes\n&no", 1) == 1)
+            elseif (confirm("Create file: " . fnamemodify(destpath, ":t") . "?", "&yes\n&no", 1) == 1)
                 execute 'edit ' . destpath
                 let folder = expand('%:h')
                 if !isdirectory(folder) && confirm("Folder not exist: " . folder . ". Create now? ", "&yes\n&no", 1) == 1
